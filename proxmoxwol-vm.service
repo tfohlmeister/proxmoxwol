@@ -15,15 +15,10 @@ ExecStart=/usr/bin/proxmoxwol-listener.py
 StandardOutput=journal
 StandardError=journal
 
-# Security hardening
-ProtectSystem=strict
+# Basic security
+NoNewPrivileges=true
 ProtectHome=true
 PrivateTmp=true
-NoNewPrivileges=true
-ProtectKernelTunables=true
-ProtectControlGroups=true
-RestrictNamespaces=true
-ReadWritePaths=/var/log/pve
 
 [Install]
 WantedBy=multi-user.target

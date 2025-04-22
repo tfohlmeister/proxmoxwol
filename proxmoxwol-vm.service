@@ -3,6 +3,8 @@ Description=Proxmox WOL Listener
 After=network.target
 Wants=network-online.target
 After=network-online.target
+After=pve-cluster.service pvedaemon.service
+Requires=pve-cluster.service pvedaemon.service
 
 [Service]
 Type=simple
@@ -21,6 +23,7 @@ NoNewPrivileges=true
 ProtectKernelTunables=true
 ProtectControlGroups=true
 RestrictNamespaces=true
+ReadWritePaths=/var/log/pve
 
 [Install]
 WantedBy=multi-user.target

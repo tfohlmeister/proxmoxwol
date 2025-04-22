@@ -1,12 +1,26 @@
 [Unit]
 Description=Proxmox WOL Listener
 After=network.target
+Wants=network-online.target
+After=network-online.target
 
 [Service]
 Type=simple
 Restart=always
+RestartSec=5
 User=root
 ExecStart=/usr/bin/proxmoxwol-listener.py
+StandardOutput=journal
+StandardError=journal
+
+# Security hardening
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+NoNewPrivileges=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictNamespaces=true
 
 [Install]
 WantedBy=multi-user.target

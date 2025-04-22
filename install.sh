@@ -17,3 +17,5 @@ chown root:root /etc/systemd/system/proxmoxwol-vm.service
 systemctl daemon-reload
 systemctl enable proxmoxwol-vm.service
 systemctl start proxmoxwol-vm.service
+
+echo "Installation complete"
